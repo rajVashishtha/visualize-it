@@ -29,7 +29,7 @@ function getTreeLayout(root: TreeNode | null) {
   const nodes: JSX.Element[] = [];
   const lines: JSX.Element[] = [];
 
-  treeData.descendants().forEach((d: { x: number; y: number; data: { name: string | number | bigint | boolean | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<string | number | bigint | boolean | React.ReactPortal | React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | null | undefined> | null | undefined; }; parent: { x: number; y: number; }; }, i: React.Key | null | undefined) => {
+  treeData.descendants().forEach((d: any, i: React.Key | null | undefined) => {
     const x = d.x + 400; // center horizontally
     const y = d.y + 40;
 
