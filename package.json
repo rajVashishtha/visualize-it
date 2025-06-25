@@ -2,7 +2,7 @@
   "name": "visualize-it",
   "version": "0.1.0",
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "homepage": "https://rajVashishtha.github.io/visualize-it",
   "scripts": {
     "dev": "next dev --turbopack",

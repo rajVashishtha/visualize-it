@@ -195,7 +195,7 @@ export default function TreeInputVisualizer({ onTreeUpdate }: Props) {
       .duration(600)
       .delay((_: any, i: number) => i * 80 + 150)
       .style("opacity", 1);
-  }, [tree]);
+  }, [onTreeUpdate, tree]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
   const raw = e.target.value;
@@ -215,7 +215,6 @@ export default function TreeInputVisualizer({ onTreeUpdate }: Props) {
     const tree = buildTree(parsed);
     setTree(tree);
     setError(""); // clear error
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     setError(err.message || "Invalid input");
     setTree(null);
