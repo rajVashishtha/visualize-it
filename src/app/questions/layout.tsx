@@ -1,4 +1,7 @@
+"use client";
+
 import Breadcrumb from "@/components/Breadcrumb";
+import { InputContextProvider } from "@/contexts/InputContext";
 
 export default function QuestionsLayout({
   children,
@@ -6,9 +9,11 @@ export default function QuestionsLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
-      <Breadcrumb />
-      {children}
-    </div>
+    <InputContextProvider>
+      <div>
+        <Breadcrumb />
+        {children}
+      </div>
+    </InputContextProvider>
   );
 }

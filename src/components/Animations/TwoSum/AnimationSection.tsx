@@ -1,22 +1,29 @@
 'use client';
-
-import Modal from '@/components/Modal';
 import { ExternalLink } from 'lucide-react';
-import { useState } from 'react';
-import TwoSumVisualizer from './TwoSumD3';
-import { generateTwoSumTrace, TraceStep } from '@/modules/traces/twoSum';
+import { useEffect, useState } from 'react';
+import { generateTwoSumTrace } from '@/modules/traces/twoSum';
 import { generateTwoSumCase, validateTwoSumInputs } from './utils';
+import { useInputContext } from '@/hooks/useInputContext';
 
 
 export default function InputForm() {
   const [arrayInput, setArrayInput] = useState('2, 7, 11, 15');
   const [targetInput, setTargetInput] = useState('9');
-  const [ isAnimateOpen, setIsAnimateOpen ] = useState(false);
-  const [traces, setTraces] = useState<TraceStep[]>([]);
-  const [nums, setNums] = useState<number[]>([]);
-  const [target, setTarget] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
 
+  const { setInputState } = useInputContext();
+
+  useEffect(() => {
+    const result = validateTwoSumInputs(arrayInput, targetInput);
+    const trace = generateTwoSumTrace(result.array, result.target);
+    setInputState({
+      twoSum: {
+        nums: result.array,
+        target: result.target,
+        trace: trace
+      }
+    });
+  }, []);
 
   const handleSubmit = () => {
     const result = validateTwoSumInputs(arrayInput, targetInput);
@@ -33,20 +40,14 @@ export default function InputForm() {
 
     // Use result.array and result.target
     const trace = generateTwoSumTrace(result.array, result.target);
-    setTraces(trace); // or pass to visualizer
-
-    setNums(result.array);
-    setTarget(result.target);
-    openAnimateModal();
+    setInputState({
+      twoSum: {
+        nums: result.array,
+        target: result.target,
+        trace: trace
+      }
+    });
   };
-
-  const openAnimateModal = () => {
-    setIsAnimateOpen(true);
-  }
-
-  const closeAnimateModal = () => {
-    setIsAnimateOpen(false);
-  }
 
   const navigateToLeetcode = () => {
     window.open("https://leetcode.com/problems/two-sum/description/", "_blank");
@@ -109,17 +110,6 @@ export default function InputForm() {
         </button>
         <button onClick={handleSubmit} className="bg-green-700 text-white px-4 py-2 rounded shadow">Animate</button>
       </div>
-      <Modal 
-        isOpen={isAnimateOpen}
-        onClose={closeAnimateModal}
-        title="Animate"
-      >
-        <TwoSumVisualizer 
-          trace={traces}
-          nums={nums}
-          target={target}
-        />
-      </Modal>
     </div>
   );
 }
