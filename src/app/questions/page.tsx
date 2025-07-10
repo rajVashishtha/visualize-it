@@ -26,6 +26,13 @@ export default function QuestionsPage() {
       difficulty: "Medium",
       route: "/questions/minimum-size-subarray-sum",
     },
+    {
+      name: "Reverse Linked List",
+      leetcodeLink:
+        "https://leetcode.com/problems/reverse-linked-list/description/",
+      difficulty: "Easy",
+      route: "/questions/reverse-linked-list",
+    },
   ];
 
   const getDifficultyClass = (difficulty: string) => {
