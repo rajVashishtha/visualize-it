@@ -42,17 +42,18 @@ var reverseList = function(head) {
                   <h2 className="text-2xl font-semibold">📘 Example</h2>
                   <pre className="bg-gray-700 p-4 rounded text-sm">
                     {`
-        Input: head = [1,2,3,4,5]
-        Output: [5,4,3,2,1]
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
                     `}
                   </pre>
                   <section>
                     <h2 className="text-2xl font-semibold">🛠️ Approach</h2>
                     <pre className="bg-gray-700 p-4 rounded text-sm mt-4">
                       {`
-        Use a pointer node to build the reversed list starting from null.
-        Loop through each node: reverse its .next pointer to point to node, then move both node and head forward.
-        Return node, which ends up pointing to the new head of the reversed list. ✅
+Use a pointer node to build the reversed list starting from null.
+Loop through each node: reverse its .next pointer to point to node,
+then move both node and head forward.
+Return node, which ends up pointing to the new head of the reversed list. ✅
                       `}
                     </pre>
                   </section>
