@@ -27,11 +27,18 @@ export default function QuestionsPage() {
       route: "/questions/minimum-size-subarray-sum",
     },
     {
-      name: "Reverse Linked List",
+      name: "Reverse linked list",
       leetcodeLink:
         "https://leetcode.com/problems/reverse-linked-list/description/",
       difficulty: "Easy",
       route: "/questions/reverse-linked-list",
+    },
+    {
+      name: "Maximum erasure value",
+      leetcodeLink:
+        "https://leetcode.com/problems/maximum-erasure-value/description",
+      difficulty: "Medium",
+      route: "/questions/maximum-erasure-value",
     },
   ];
 
